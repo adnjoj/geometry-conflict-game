@@ -38,9 +38,6 @@ export class CabinetStore {
           this.selectedFraction = user.fraction?.id;
           this.selectedSpeciality = user.speciality?.id;
 
-          if (!this.selectedFraction) this.setSelectedFraction(1);
-          if (!this.selectedSpeciality) this.setSelectedSpeciality(1);
-
           this.selectedMap = user.map?.id ?? undefined;
 
           this.equipment = new Map();
@@ -58,6 +55,9 @@ export class CabinetStore {
           for (const { amount, clip } of user.clips) {
             this.equipment.get(4).push({ id: clip.id, amount });
           }
+
+          if (!this.selectedFraction) this.setSelectedFraction(1);
+          if (!this.selectedSpeciality) this.setSelectedSpeciality(1);
         }),
       )
       .catch(

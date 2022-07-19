@@ -16,7 +16,9 @@ export class LobbiesMenu extends InterfaceElement {
     super();
     this.backgroundImage = this.scene.add.image(0, 0, 'character-screen-bg');
 
-    LobbiesWsApiClient.on('failed_to_join_lobby', ({ lobbyId }) => {
+    LobbiesWsApiClient.on('failed_to_join_lobby', ({ lobbyId, reason }) => {
+      if (reason) alert(reason);
+
       if (lobbyId === this.waitingForResponseFromLobbyId) {
         this.waitingForResponseFromLobbyId = undefined;
       }

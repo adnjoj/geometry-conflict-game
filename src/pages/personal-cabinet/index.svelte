@@ -1,9 +1,10 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onDestroy, onMount } from 'svelte';
 
   import { PersonalCabinetScene } from './scenes/PersonalCabinet';
 
   let canvas: HTMLCanvasElement;
+  let game: Phaser.Game;
 
   onMount(() => {
     const config: Phaser.Types.Core.GameConfig = {
@@ -16,7 +17,12 @@
       canvas,
     };
 
-    new Phaser.Game(config);
+    game = new Phaser.Game(config);
+  });
+
+  onDestroy(() => {
+    game?.scene?.destroy();
+    game?.destroy(true);
   });
 </script>
 

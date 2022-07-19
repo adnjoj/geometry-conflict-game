@@ -19,7 +19,7 @@ export class Image extends InterfaceElement {
 
     _scene.load.on(Phaser.Loader.Events.COMPLETE, () => {
       this._image.scene = _scene;
-      this._image.setTexture(this.texture).setInteractive();
+      this.setTexture(this.texture);
       this.update();
     });
   }
@@ -68,7 +68,7 @@ export class Image extends InterfaceElement {
     this._texture = texture;
 
     if (this._scene.textures.exists(texture)) {
-      this._image.setTexture(texture);
+      this._image.setTexture(texture).setInteractive();
     } else {
       this._image.setTexture('empty');
     }
