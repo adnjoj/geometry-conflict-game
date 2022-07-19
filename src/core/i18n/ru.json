@@ -1,0 +1,45 @@
+{
+  "loading": "Загрузка...",
+  "gamemodes": {
+    "Flag": "Флаг",
+    "Siege": "Осада",
+    "Path": "Тропа",
+    "AllOrNothing": "Всё или ничего",
+    "Diversion": "Диверсия",
+    "Meat": "Мясо",
+    "Documents": "Документы"
+  },
+  "skinTypes": {
+    "Skin": "Скин",
+    "Mouth": "Рот",
+    "Eyesockets": "Глазницы",
+    "Eyebrows": "Брови",
+    "Eyes": "Глаза",
+    "Footprints": "Следы"
+  },
+  "specialities": {
+    "Soldier": "Солдат",
+    "Assaulter": "Штурмовик",
+    "Doctor": "Доктор",
+    "Hunter": "Охотник",
+    "Juggernaut": "Подавляющий",
+    "Miner": "Минер",
+    "Scout": "Разведчик",
+    "Sniper": "Снайпер"
+  },
+  "equipmentTabs": {
+    "Weapon1": "Оружие 1",
+    "Weapon2": "Оружие 2",
+    "ExtraWeapon": "Доп. оружие",
+    "Traps": "Ловушки",
+    "Gadgets": "Гаджеты",
+    "Medicine": "Медикаменты",
+    "Ammo": "Боезапас"
+  },
+  "winnerFractionCongratulations": {
+    "Square": "Команда квадратов победила!",
+    "Circle": "Команда кругов победила!",
+    "Star": "Команда звезд победила!",
+    "Triangle": "Команда треугольников победила!"
+  }
+}

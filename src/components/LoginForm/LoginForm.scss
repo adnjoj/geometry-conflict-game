@@ -1,0 +1,102 @@
+@font-face {
+  font-family: 'Micra';
+  src: url('/fonts/micra-bold.ttf');
+}
+
+.login-form {
+  width: 100vh;
+  height: 60vh;
+
+  box-sizing: border-box;
+  padding: 6rem 3rem 3rem 3rem;
+
+  background-image: url('/images/login-page/screen.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  font-family: 'Micra';
+  font-size: 1.2em;
+  color: white;
+
+  &__wrapper {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  & :global(input) {
+    margin: 0;
+
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid white;
+
+    font-family: 'Micra';
+    color: white;
+    background: transparent;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  & :global(label) {
+    display: flex;
+    align-items: center;
+  }
+
+  :global(&__error-message) {
+    position: absolute;
+    top: 100%;
+    right: 3rem;
+
+    font-size: 0.7em;
+    color: rgb(255, 180, 180);
+  }
+
+  &__button {
+    max-width: 100%;
+    max-height: 4rem;
+  }
+
+  &__image-button {
+    border: none;
+    background: transparent !important;
+    margin: 0;
+    padding: 0;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__row {
+    position: relative;
+
+    height: 3rem;
+    padding: 0 3rem;
+    margin: 1.5rem 0;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__buttons-group {
+    padding: 0 3rem;
+    margin-top: 1.5rem;
+    margin-bottom: 3rem;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__register-button-wrapper {
+    margin-bottom: 3rem;
+
+    display: flex;
+    justify-content: center;
+  }
+}
