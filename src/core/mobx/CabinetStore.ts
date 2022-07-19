@@ -35,24 +35,24 @@ export class CabinetStore {
           this.finishedParsing = true;
           this.parsingError = null;
 
-          this.selectedFraction = user.fraction?.id;
-          this.selectedSpeciality = user.speciality?.id;
+          this.selectedFraction = user.__fraction__?.id;
+          this.selectedSpeciality = user.__speciality__?.id;
 
-          this.selectedMap = user.map?.id ?? undefined;
+          this.selectedMap = user.__map__?.id ?? undefined;
 
           this.equipment = new Map();
           this.lookElements = new Map();
 
-          for (const { skin } of user.skins) {
+          for (const { skin } of user.__skins__) {
             this.lookElements.set(skin.type.id, { id: skin.id });
           }
 
-          for (const { slot, weapon } of user.weapons) {
+          for (const { slot, weapon } of user.__weapons__) {
             this.equipment.set(slot, [{ id: weapon.id, amount: 1 }]);
           }
 
           this.equipment.set(4, []);
-          for (const { amount, clip } of user.clips) {
+          for (const { amount, clip } of user.__clips__) {
             this.equipment.get(4).push({ id: clip.id, amount });
           }
 

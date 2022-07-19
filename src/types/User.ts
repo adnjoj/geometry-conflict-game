@@ -8,11 +8,11 @@ import type { Weapon } from './Weapon';
 export interface User {
   id: number;
   username: string;
-  fraction: Fraction;
-  speciality: Speciality;
-  map: Map;
+  __fraction__: Fraction;
+  __speciality__: Speciality;
+  __map__: Map;
 
-  skins: { skin: Skin }[];
-  clips: { amount: number; clip: Clip }[];
-  weapons: { slot: number; weapon: Weapon }[];
+  __skins__: { skin: Skin }[];
+  __clips__: { amount: number; clip: Clip }[];
+  __weapons__: { slot: number; weapon: Weapon }[];
 }

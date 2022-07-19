@@ -13,10 +13,11 @@ import { Text } from '../../../personal-cabinet/interface-elements/Text/Text';
 import { get } from 'svelte/store';
 
 export class GameOverScreen extends InterfaceElement {
+  private _backgroundRect: Phaser.GameObjects.Rectangle;
   private _backgroundImage: Image;
   private _winnerFractionText: Text;
   private _players = new Array<{
-    data: User;
+    data: any;
     image: Player;
     usernameText: Text;
     statistics: {
@@ -29,6 +30,9 @@ export class GameOverScreen extends InterfaceElement {
 
   constructor(private readonly _scene: GameScene) {
     super();
+    this._backgroundRect = _scene.add
+      .rectangle(0, 0, 10000, 10000, 0x2d2d2d)
+      .setDepth(10000000);
     this._backgroundImage = new Image(_scene, 'game-over-bg')
       .setSize(1920 / 1.2, 1080 / 1.2)
       .setDepth(10000000);
@@ -51,7 +55,7 @@ export class GameOverScreen extends InterfaceElement {
 
   public setPlayers(
     players: Array<
-      User & {
+      any & {
         statistics: { kills: number; damageDealt: number; damageTaken: number };
       }
     >,
@@ -126,6 +130,7 @@ export class GameOverScreen extends InterfaceElement {
   }
 
   protected updateScale(): void {
+    this._backgroundRect.setScale(this.scale);
     this._backgroundImage.setScale(this.scale);
     this._winnerFractionText.setScale(this.scale);
     this._players.forEach(({ image, usernameText, statistics }) => {
@@ -137,6 +142,14 @@ export class GameOverScreen extends InterfaceElement {
   }
 
   protected updatePosition(): void {
+    const centerX = this._scene.scale.width / 2;
+    const centerY = this._scene.scale.height / 2;
+
+    this._backgroundRect.setPosition(
+      centerX + this.position.x * this.scale,
+      centerY + this.position.y * this.scale,
+    );
+
     this._backgroundImage.setPosition(this.position.x, this.position.y);
     this._winnerFractionText.setPosition(
       this.position.x - 680,
@@ -164,6 +177,7 @@ export class GameOverScreen extends InterfaceElement {
   }
 
   protected updateVisibility(): void {
+    this._backgroundRect.setVisible(this.visible);
     this._backgroundImage.setVisible(this.visible);
     this._winnerFractionText.setVisible(this.visible);
     this._players.forEach(({ image, usernameText, statistics }) => {
