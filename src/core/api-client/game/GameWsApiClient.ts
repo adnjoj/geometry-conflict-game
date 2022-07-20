@@ -4,7 +4,7 @@ import { WsApiClient } from '../WsApiClient';
 
 export class GameWsApiClient extends WsApiClient {
   protected static _socket = io(
-    `ws://${process.env.SERVER_HOSTNAME}:3001/game`,
+    `ws://${process.env.SERVER_HOSTNAME}:${process.env.SERVER_PORT}/game`,
     {
       auth: { token: ApiClient.token },
     },
@@ -12,7 +12,7 @@ export class GameWsApiClient extends WsApiClient {
 
   public static openSocket(): void {
     GameWsApiClient._socket = io(
-      `ws://${process.env.SERVER_HOSTNAME}:3001/game`,
+      `ws://${process.env.SERVER_HOSTNAME}:${process.env.SERVER_PORT}/game`,
       {
         auth: { token: ApiClient.token },
       },

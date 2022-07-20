@@ -4,7 +4,7 @@ import { WsApiClient } from '../WsApiClient';
 
 export class LobbiesWsApiClient extends WsApiClient {
   protected static readonly _socket = io(
-    `ws://${process.env.SERVER_HOSTNAME}:3001/lobbies`,
+    `ws://${process.env.SERVER_HOSTNAME}:${process.env.SERVER_PORT}/lobbies`,
     {
       auth: { token: ApiClient.token },
     },
