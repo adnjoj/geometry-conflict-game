@@ -65,12 +65,7 @@ export class GameObjectGateway {
     const currentTime = Date.now();
     this._firstUpdatePackageTime ??= { client: currentTime, server: data.time };
 
-    // Time of the package arrival + time between last 2 packages + 40ms to
-    // make the animations overlap and make them smoother
-    const gameObjectsAnimationEndTime =
-      this._firstUpdatePackageTime.client +
-      (data.time - this._firstUpdatePackageTime.server) +
-      40;
+    const gameObjectsAnimationEndTime = currentTime + 40;
 
     data.updatedGameObjects.forEach(({ id, renderData }) => {
       if (!id || !renderData) return;
