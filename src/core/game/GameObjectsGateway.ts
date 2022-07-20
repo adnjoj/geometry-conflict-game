@@ -70,7 +70,7 @@ export class GameObjectGateway {
     const gameObjectsAnimationEndTime =
       this._firstUpdatePackageTime.client +
       (data.time - this._firstUpdatePackageTime.server) +
-      (data.time - (this._previousUpdatePackageTime?.client ?? data.time)) +
+      (currentTime - (this._previousUpdatePackageTime?.client ?? currentTime)) +
       40;
 
     data.updatedGameObjects.forEach(({ id, renderData }) => {
