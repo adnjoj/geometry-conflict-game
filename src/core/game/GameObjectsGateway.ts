@@ -65,7 +65,7 @@ export class GameObjectGateway {
     const currentTime = Date.now();
     this._firstUpdatePackageTime ??= { client: currentTime, server: data.time };
 
-    const gameObjectsAnimationEndTime = currentTime + 40;
+    const gameObjectsAnimationEndTime = currentTime + 30;
 
     data.updatedGameObjects.forEach(({ id, renderData }) => {
       if (!id || !renderData) return;

@@ -10,11 +10,17 @@ export class LobbiesMenu extends InterfaceElement {
   private waitingForResponseFromLobbyId: number = undefined;
 
   private backgroundImage: Phaser.GameObjects.Image;
+  private selectLobbyText: Phaser.GameObjects.Text;
   private lobbies = new Array<Phaser.GameObjects.Text>();
 
   constructor(private readonly scene: Phaser.Scene) {
     super();
     this.backgroundImage = this.scene.add.image(0, 0, 'character-screen-bg');
+    this.selectLobbyText = this.scene.add
+      .text(0, 0, 'Выберите лобби:')
+      .setOrigin(0, 0.5)
+      .setFontFamily('Montserrat')
+      .setFontSize(24);
 
     LobbiesWsApiClient.on('failed_to_join_lobby', ({ lobbyId, reason }) => {
       if (reason) alert(reason);
@@ -65,6 +71,7 @@ export class LobbiesMenu extends InterfaceElement {
 
   protected updateScale(): void {
     this.backgroundImage.setScale(this.scale);
+    this.selectLobbyText.setScale(this.scale);
     this.lobbies.forEach((lobby) => lobby.setScale(this.scale));
   }
 
@@ -77,16 +84,22 @@ export class LobbiesMenu extends InterfaceElement {
       centerY + this.position.y * this.scale,
     );
 
+    this.selectLobbyText.setPosition(
+      centerX + (this.position.x - 360) * this.scale,
+      centerY + (this.position.y - 120) * this.scale,
+    );
+
     this.lobbies.forEach((lobby, i) =>
       lobby.setPosition(
         centerX + (this.position.x - 330 + (i % 4) * 200) * this.scale,
-        centerY + (this.position.y - 100 + Math.floor(i / 4) * 70) * this.scale,
+        centerY + (this.position.y - 65 + Math.floor(i / 4) * 70) * this.scale,
       ),
     );
   }
 
   protected updateVisibility(): void {
     this.backgroundImage.setVisible(this.visible);
+    this.selectLobbyText.setVisible(this.visible);
     this.lobbies.forEach((lobby) => lobby.setVisible(this.visible));
   }
 }
