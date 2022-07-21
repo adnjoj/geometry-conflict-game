@@ -1,10 +1,10 @@
-import type { GameScene } from '../../pages/game/scenes/Game';
+import type { GameScene } from '../../pages/index/scenes/Game';
 import type { DataToRender } from './types/DataToRender';
 import type { DataToRenderImage } from './types/DataToRenderImage';
 import type { DataToRenderText } from './types/DataToRenderText';
 
-import { Image } from '../../pages/game/game-objects/Image';
-import { Text } from '../../pages/game/game-objects/Text';
+import { Image } from '../../pages/index/game-objects/Image';
+import { Text } from '../../pages/index/game-objects/Text';
 
 export class GameObjectGateway {
   public playerId;

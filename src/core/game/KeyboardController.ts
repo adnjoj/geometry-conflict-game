@@ -1,4 +1,4 @@
-import type { GameScene } from '../../pages/game/scenes/Game';
+import type { GameScene } from '../../pages/index/scenes/Game';
 import { GameWsApiClient } from '../api-client/game/GameWsApiClient';
 
 export class KeyboardController {

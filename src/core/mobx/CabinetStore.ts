@@ -4,7 +4,7 @@ import type { Weapon } from '../../types/Weapon';
 import type { User } from '../../types/User';
 import type { Skin } from '../../types/Skin';
 
-import { Activity } from '../../pages/personal-cabinet/interface-elements/ActivitiesMenu/ActivitiesMenu';
+import { Activity } from '../../pages/index/enums/Activity.enum';
 
 import { UserApiClient } from '../api-client/user/UserApiClient';
 
