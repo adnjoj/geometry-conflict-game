@@ -121,7 +121,7 @@ export class GameOverScreen extends InterfaceElement {
       this._players.forEach(({ data, image }) => {
         const skinId = data.skins.find(({ skin }) => skin?.type?.id === id)
           ?.skin.id;
-        image.setElement(key, `skins/${skinId}/skinImage.png`);
+        image.setElement(key, `skin-${skinId}`);
       });
     });
 
