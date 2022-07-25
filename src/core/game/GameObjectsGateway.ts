@@ -9,8 +9,7 @@ import { Text } from '../../pages/index/game-objects/Text';
 export class GameObjectGateway {
   public playerId;
 
-  private _firstUpdatePackageTime: { client: number; server: number };
-  private _previousUpdatePackageTime: { client: number; server: number };
+  private readonly _smoothnessDelay = 40;
 
   constructor(private readonly _scene: GameScene) {}
 
@@ -62,10 +61,7 @@ export class GameObjectGateway {
   }): void {
     if (!data.time || !data.updatedGameObjects) return;
 
-    const currentTime = Date.now();
-    this._firstUpdatePackageTime ??= { client: currentTime, server: data.time };
-
-    const gameObjectsAnimationEndTime = currentTime + 30;
+    const gameObjectsAnimationEndTime = Date.now() + this._smoothnessDelay;
 
     data.updatedGameObjects.forEach(({ id, renderData }) => {
       if (!id || !renderData) return;
@@ -93,18 +89,15 @@ export class GameObjectGateway {
         gameObject.setFontSize(renderData.fontSize);
       }
     });
-
-    this._previousUpdatePackageTime = {
-      client: currentTime,
-      server: data.time,
-    };
   }
 
   handleDestroyed(data: { id: number; time: number }): void {
-    const { id } = data;
-    if (!id) return;
+    setTimeout(() => {
+      const { id } = data;
+      if (!id) return;
 
-    this._scene.gameObjects.get(id)?.destroy();
-    this._scene.gameObjects.delete(id);
+      this._scene.gameObjects.get(id)?.destroy();
+      this._scene.gameObjects.delete(id);
+    }, this._smoothnessDelay);
   }
 }
